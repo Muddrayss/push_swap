@@ -6,7 +6,7 @@
 /*   By: egualand <egualand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:40:53 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/16 17:28:20 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:05:59 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <limits.h>
-#include <stdio.h>
+#	include <limits.h>
+#	include <stdio.h>
 
 typedef struct s_list
 {

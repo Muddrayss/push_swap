@@ -6,11 +6,16 @@
 /*   By: egualand <egualand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 15:45:39 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/16 17:54:22 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:24:26 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void del(int value)
+{
+	value = 0;
+}
 
 int main(int argc, char **argv)
 {
@@ -27,5 +32,7 @@ int main(int argc, char **argv)
 		a = (t_list *)create_stack(argc, argv);
 	b = NULL;
 	sort_lists(&a, &b);
+	ft_lstclear(&a, del);
+	ft_lstclear(&b, del);
 	return (0);
 }

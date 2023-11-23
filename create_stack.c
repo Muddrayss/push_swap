@@ -8,7 +8,7 @@ static int check_duplicates(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		j = 1;
+		j = i + 1;
 		while (j < argc)
 		{
 			if (i != j && ft_atoi(argv[i]) == ft_atoi(argv[j]))
@@ -59,12 +59,30 @@ static t_list *process(int argc, char **argv)
 	return (a);
 }
 
+static t_list *sub_process(char **argv)
+{
+	t_list *a;
+	t_list *new;
+	int i;
+
+	i = 0;
+	a = NULL;
+	while (argv[i])
+	{
+		new = ft_lstnew(ft_atoi(argv[i]));
+		ft_lstadd_back(&a, new);
+		i++;
+	}
+
+	return (a);
+}
+
 t_list *create_stack(int argc, char **argv)
 {
 	if (check_duplicates(argc, argv))
 		return (NULL);
 	if (argc == 2)
-		return (process(argc, ft_split(argv[1], ' ')));
+		return (sub_process(ft_split(argv[1], ' ')));
 	else
 		return (process(argc, argv));
 }

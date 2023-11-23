@@ -6,7 +6,7 @@
 /*   By: egualand <egualand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:39:07 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/14 17:28:18 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:18:11 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	**ft_make_split(char **array, char const *s, char c)
 		else if (s[i] == c)
 			in_arr = 0;
 	}
-	array[arr_index] = 0;
+	array[arr_index] = NULL;
 	return (array);
 }
 

@@ -214,32 +214,20 @@ static void perform_operations(t_list **stack_a, t_list **stack_b, int num)
 	t_total_operations total_operations;
 	t_operations operations_a;
 	t_operations operations_b;
-	int is_min;
 
-	is_min = 0;
 	operations_a = count_stack_operations(stack_a, num);
 	operations_a.rrx += 1;
-	// printf("\nnum: %d\n", num);
-	// printf("Initial stack_b:\n");
-	// printList(*stack_b);
 	if (num < find_min(stack_b))
 	{
-		// printf("min: %d\n", find_min(stack_b));
 		operations_b = count_stack_operations(stack_b, find_min(stack_b));
 		operations_b.rx += 1;
-		is_min = 1;
 	}
 	else
 	{
-		// printf("best_num: %d\n", find_best_num(stack_b, num));
 		operations_b = count_stack_operations(stack_b, find_best_num(stack_b, num));
 		operations_b.rrx += 1;
 	}
-	// printList(*stack_b);
-	// printf("operations_a: %d %d\n", operations_a.rx, operations_a.rrx);
-	// printf("operations_b: %d %d\n", operations_b.rx, operations_b.rrx);
 	total_operations = get_total_operations(operations_a, operations_b);
-	// printf("total_operations: %d %d %d %d\n", total_operations.ra, total_operations.rb, total_operations.rra, total_operations.rrb);
 	while (total_operations.ra > 0 && total_operations.rb > 0)
 	{
 		perform_operation("rr", stack_a, stack_b);
@@ -272,11 +260,35 @@ static void perform_operations(t_list **stack_a, t_list **stack_b, int num)
 		perform_operation("rrb", stack_a, stack_b);
 		total_operations.rrb--;
 	}
-	// printf("Ending stack_b:\n");
-	// printList(*stack_b);
 	perform_operation("pb", stack_a, stack_b);
-	if (is_min)
-		perform_operation("rb", stack_a, stack_b);
+}
+
+static void finish_sort(t_list **stack_a, t_list **stack_b)
+{
+	int i;
+	t_operations operations_b;
+
+	i = ft_lstsize(*stack_b);
+	operations_b = count_stack_operations(stack_b, find_min(stack_b));
+	operations_b.rx += 1;
+	if (operations_b.rx <= operations_b.rrx)
+	{
+		while (operations_b.rx > 0)
+		{
+			perform_operation("rb", stack_a, stack_b);
+			operations_b.rx--;
+		}
+	}
+	else
+	{
+		while (operations_b.rrx > 0)
+		{
+			perform_operation("rrb", stack_a, stack_b);
+			operations_b.rrx--;
+		}
+	}
+	while (i-- > 0)
+		perform_operation("pa", stack_a, stack_b);
 }
 
 void sort_lists(t_list **stack_a, t_list **stack_b)
@@ -311,4 +323,5 @@ void sort_lists(t_list **stack_a, t_list **stack_b)
 		perform_operations(stack_a, stack_b, min_num);
 		i = ft_lstsize(*stack_a);
 	}
+	finish_sort(stack_a, stack_b);
 }
