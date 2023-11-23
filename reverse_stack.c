@@ -6,7 +6,7 @@
 /*   By: egualand <egualand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:01:12 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/14 16:20:56 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:23:24 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	reverse_stack(t_list **head)
 	if (*head && (*head)->next)
 	{
 		tmp = *head;
-		*head = (*head)->next;
-		tmp2 = *head;
-		while (tmp2->next)
-			tmp2 = tmp2->next;
-		tmp2->next = tmp;
+		while (tmp->next->next)
+			tmp = tmp->next;
+		tmp2 = tmp->next;
 		tmp->next = NULL;
+		tmp2->next = *head;
+		*head = tmp2;
 	}
 }

@@ -20,6 +20,27 @@ static int check_duplicates(int argc, char **argv)
 	return (0);
 }
 
+// static int check_duplicates(int argc, char **argv)
+// {
+// 	int i;
+// 	int *arr;
+
+// 	i = 0;
+// 	arr = (int *)ft_calloc(argc, sizeof(int));
+// 	while (i < argc)
+// 	{
+// 		if (arr[ft_atoi(argv[i])] == 1)
+// 		{
+// 			free(arr);
+// 			return (1);
+// 		}
+// 		arr[ft_atoi(argv[i])] = 1;
+// 		i++;
+// 	}
+// 	free(arr);
+// 	return (0);
+// }
+
 static t_list *process(int argc, char **argv)
 {
 	t_list *a;
