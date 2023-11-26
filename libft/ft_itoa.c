@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egualand <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:17:34 by egualand          #+#    #+#             */
-/*   Updated: 2023/10/14 16:17:43 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:08:21 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static int	ft_count_digits(int n)
 
 char	*ft_itoa(int n)
 {
-	char			*str;
-	long long		num;
-	int				n_len;
-	int				i;
-	int				j;
+	char		*str;
+	long long	num;
+	int			n_len;
+	int			i;
+	int			j;
 
 	i = 0;
 	n_len = ft_count_digits(n);

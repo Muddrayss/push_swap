@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   find_max.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 12:12:38 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/25 14:27:09 by egualand         ###   ########.fr       */
+/*   Created: 2023/11/26 16:10:04 by egualand          #+#    #+#             */
+/*   Updated: 2023/11/26 17:18:33 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	find_max(t_list **stack)
 {
-	void	*ptr;
+	int		max;
+	t_list	*tmp;
 
-	if (nmemb != 0 && size > ULONG_MAX / nmemb)
-		return (NULL);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	max = (*stack)->value;
+	tmp = *stack;
+	while (tmp)
+	{
+		if (tmp->value > max)
+			max = tmp->value;
+		tmp = tmp->next;
+	}
+	return (max);
 }

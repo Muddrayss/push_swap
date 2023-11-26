@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 12:12:38 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/25 14:27:09 by egualand         ###   ########.fr       */
+/*   Created: 2023/11/26 14:20:24 by egualand          #+#    #+#             */
+/*   Updated: 2023/11/26 14:22:29 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+long	ft_atol(const char *nptr)
 {
-	void	*ptr;
+	long				i;
+	long				sign;
+	unsigned long int	res;
 
-	if (nmemb != 0 && size > ULONG_MAX / nmemb)
-		return (NULL);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
+	while (ft_isdigit(nptr[i]))
+	{
+		res *= 10;
+		res = res + (nptr[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

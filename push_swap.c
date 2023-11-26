@@ -3,34 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egualand <egualand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 15:45:39 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:24:26 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:15:54 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void del(int value)
+static void	del(int value)
 {
 	value = 0;
 }
 
-int main(int argc, char **argv)
+static void	is_sorted(t_list **stack_a)
 {
-	t_list *a;
-	t_list *b;
+	t_list	*tmp;
 
-	a = (t_list *)malloc(sizeof(t_list));
-	b = (t_list *)malloc(sizeof(t_list));
+	tmp = *stack_a;
+	while (tmp->next)
+	{
+		if (tmp->value > tmp->next->value)
+			return ;
+		tmp = tmp->next;
+	}
+	ft_lstclear(stack_a, del);
+	exit(0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*a;
+	t_list	*b;
+
 	a = NULL;
 	b = NULL;
-	if (argc < 2)
-		return (1);
-	else
-		a = (t_list *)create_stack(argc, argv);
+	a = (t_list *)create_stack(argc, argv);
+	if (a == NULL)
+		ft_error(0);
 	b = NULL;
+	is_sorted(&a);
 	sort_lists(&a, &b);
 	ft_lstclear(&a, del);
 	ft_lstclear(&b, del);

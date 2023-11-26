@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perform_operation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egualand <egualand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 16:59:08 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/18 14:50:42 by egualand         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:31:50 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static void	perform_ss(t_list **head_a, t_list **head_b)
 {
-  swap_stack(head_a);
-  swap_stack(head_b);
+	swap_stack(head_a);
+	swap_stack(head_b);
 }
 
 static void	perform_rr(t_list **head_a, t_list **head_b)
 {
-  rotate_stack(head_a);
-  rotate_stack(head_b);
+	rotate_stack(head_a);
+	rotate_stack(head_b);
 }
 
 static void	perform_rrr(t_list **head_a, t_list **head_b)
 {
-  reverse_stack(head_a);
-  reverse_stack(head_b);
+	reverse_stack(head_a);
+	reverse_stack(head_b);
 }
 
 void	perform_operation(char *c, t_list **head_a, t_list **head_b)

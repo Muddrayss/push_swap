@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   find_min.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 12:12:38 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/25 14:27:09 by egualand         ###   ########.fr       */
+/*   Created: 2023/11/24 17:53:13 by egualand          #+#    #+#             */
+/*   Updated: 2023/11/24 17:54:50 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	find_min(t_list **stack)
 {
-	void	*ptr;
+	t_list	*tmp;
+	int		min;
 
-	if (nmemb != 0 && size > ULONG_MAX / nmemb)
-		return (NULL);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	tmp = *stack;
+	min = tmp->value;
+	while (tmp && tmp->next)
+	{
+		tmp = tmp->next;
+		if (tmp->value < min)
+			min = tmp->value;
+	}
+	return (min);
 }

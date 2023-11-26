@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   sort_two.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 12:12:38 by egualand          #+#    #+#             */
-/*   Updated: 2023/11/25 14:27:09 by egualand         ###   ########.fr       */
+/*   Created: 2023/11/26 16:02:18 by egualand          #+#    #+#             */
+/*   Updated: 2023/11/26 17:15:26 by egualand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	sort_two(t_list **stack_a)
 {
-	void	*ptr;
-
-	if (nmemb != 0 && size > ULONG_MAX / nmemb)
-		return (NULL);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	if ((*stack_a)->value > (*stack_a)->next->value)
+		perform_operation("sa", stack_a, NULL);
 }
